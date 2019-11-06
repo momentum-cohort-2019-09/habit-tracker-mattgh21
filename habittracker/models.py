@@ -16,6 +16,7 @@ class Habit(models.Model):
     )
     created_at = models.DateField(default=timezone.now)
     updated_at = models.DateField(default=timezone.now)
+    end_date = models.DateField(default=none, null=True)
 
     def __str__(self):
         return self.name
@@ -29,11 +30,19 @@ class Record(models.Model):
     )
     met_goal = models.BooleanField(default=False)
     created_at = models.DateField(default=timezone.now)
+    updated_at = models.DateField(default=timezone.now)
+
+    def __str__(self):
+        return self.habit
 
 class Comment(models.Model):
-    author = models.ForeignKey(to='User', on_delete=modles.CASCADE, blank=True, null=True)
-    habit = models.ForeignKey(to='Habit', on_delete=modles.CASCADE)
+    author = models.ForeignKey(to='User', on_delete=models.CASCADE, blank=True, null=True)
+    habit = models.ForeignKey(to='Habit', on_delete=models.CASCADE)
     comment = models.TextField()
     created_at = models.DateField(default=timezone.now)
+    updated_at = models.DateField(default=timezone.now)
+
+    def __str__(self):
+        return self.comment
     
 

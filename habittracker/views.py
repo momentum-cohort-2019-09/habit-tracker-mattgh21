@@ -13,6 +13,6 @@ def add_habit(request):
             return redirect('/') 
     else:
         form = HabitForm()
-    return render(request, 'notes/add_note.html', {
+    return render(request, '', {
         'form': form
     })
