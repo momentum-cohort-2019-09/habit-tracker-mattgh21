@@ -22,7 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('registration.backends.simple.urls')),
     path('', views.home_page, name='home_page'),
-    path('accounts/home_logged_in/', views.home_logged_in, name='home_logged in')
+    path('habittracker/add_habit/', views.add_habit, name='add_habit')
 
 ]
 

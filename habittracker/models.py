@@ -5,7 +5,7 @@ from django.contrib.auth.models import AbstractUser
 class User(AbstractUser):
     is_registered = models.BooleanField(default=False)
     def __str__(self):
-        return self.user
+        return self.username
 
 class Habit(models.Model):
     target = models.IntegerField()
@@ -13,7 +13,7 @@ class Habit(models.Model):
     user = models.ForeignKey(
         to='User',
         on_delete=models.CASCADE,
-        related_name='user',
+        related_name='users',
         blank=True, 
         null=True,
     )
@@ -29,7 +29,7 @@ class Record(models.Model):
     habit = models.ForeignKey(
         to='Habit',
         on_delete=models.CASCADE,
-        related_name='habit',
+        related_name='habits',
         blank=True, 
         null=True,
     )
@@ -38,7 +38,7 @@ class Record(models.Model):
     updated_at = models.DateField(default=timezone.now)
 
     def __str__(self):
-        return self.habit
+        return self.record
 
 class Comment(models.Model):
     author = models.ForeignKey(to='User', on_delete=models.CASCADE, blank=True, null=True)
