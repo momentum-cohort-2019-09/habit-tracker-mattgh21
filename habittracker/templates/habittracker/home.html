@@ -1,0 +1,13 @@
+{% extends "base.html" %} {% block content %}
+<h1>Welcome to Habit Tracker!</h1>
+<nav>
+    <div class="navbar">
+        <a href='/'>Home</a>
+    </div>
+    <div class="navbar">
+        <a href="{% url 'home_logged_in' %}">Login</a>
+    </div>
+</nav>
+
+
+{% endblock %}

@@ -133,6 +133,13 @@ INTERNAL_IPS = [
 
 # Registration
 
+AUTH_USER_MODEL = 'habittracker.User'
+
 ACCOUNT_ACTIVATION_DAYS = 7
 REGISTRATION_AUTO_LOGIN = True
 LOGIN_REDIRECT_URL = '/'
+
+EMAIL_BACKEND = 'django.habittracker.mail.backends.console.EmailBackend'
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'statics'),
+# ]

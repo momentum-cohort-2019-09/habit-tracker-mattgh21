@@ -16,10 +16,14 @@ Including another URLconf
 from django.conf import settings
 from django.urls import path, include
 from django.contrib import admin
+from habittracker import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('registration.backends.simple.urls')),
+    path('', views.home_page, name='home_page'),
+    path('accounts/home_logged_in/', views.home_logged_in, name='home_logged in')
+
 ]
 
 if settings.DEBUG:
