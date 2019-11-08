@@ -22,8 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('registration.backends.simple.urls')),
     path('', views.home_page, name='home_page'),
-    path('habittracker/add_habit/', views.add_habit, name='add_habit')
-
+    path('accounts/profile/', views.profile, name='profile'),
 ]
 
 if settings.DEBUG:

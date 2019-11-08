@@ -27,8 +27,8 @@
             <ul>
                 <h1>Welcome {{ request.user.username }}!</h1>
                 <a href="{% url 'home_page' %}">Home</a>
-                <a href="{% url 'add_habit' %}">Add Habit</a>
-
+                <a href="{% url 'profile' %}">Profile</a>
+                <a href="{% url 'auth_logout' %}">Logout</a>
             </ul>
         </nav>
     </header>

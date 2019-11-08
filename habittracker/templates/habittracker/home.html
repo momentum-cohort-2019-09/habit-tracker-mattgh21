@@ -1,5 +1,8 @@
-{% extends "base.html" %} {% block content %} {% for habit in user.habits.all %}
-<li>
-    <div><a href="/habittracker/{{ habit.pk }}">{{ habit.name }}</a></div>
-</li>
+{% extends "base.html" %} {% block content %} {% for habit in all_habits %}
+<h3>{{ habit.name }}</h3>
+<div>
+    <li>{{ habit.target }}</li>
+</div>
+<div>User: {{ habit.user }}</div>
+<p>{{ habit_created_at }}</p>
 {% endfor %} {% endblock %}

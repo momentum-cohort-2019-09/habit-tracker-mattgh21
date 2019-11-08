@@ -8,24 +8,33 @@ from .forms import HabitForm
 
 
 # Create views here
-def add_habit(request):
+def profile(request):
+    user = request.user
     if request.method == 'POST':
         form = HabitForm(request.POST)
         if form.is_valid():
             habit = form.save(commit=False)
-            habit.created_at = timezone.now()
-            habit.save()
-            return redirect('/') 
+            habit.user = user
+            habit = form.save()
+            return redirect(to='profile') 
     else:
         form = HabitForm()
-    return render(request, 'habittracker/add_habit.html', {
-        'form': form
-    })
+        user_habits = Habit.objects.filter(user=request.user)
+    return render(request, 'habittracker/profile.html', {'user':user, 'form':form, 'habits': user_habits})
+
+
  
 
 @csrf_exempt
+@login_required
 def home_page(request):
     user = request.user
+    all_habits = Habit.objects.all()
     return render(request, 'habittracker/home.html', {
-        'user': user
+        'user': user, 'all_habits': all_habits
     })
+
+# @login_required
+# def profile_page(request, pk):
+#     habits = Habit.objects.filter(user=User.objects.get(pk=pk))
+#     return render(request, 'habittracker/profile.html', {'habits': habits})
