@@ -1,5 +1,7 @@
-{% extends "base.html" %} {% block content %} {% for habit in all_habits %}
-<h3>{{ habit.name }}</h3>
+{% extends "base.html" %} {% block content %}
+<h2>Habits:</h2>
+{% for habit in all_habits %}
+<h4>{{ habit.name }}</h4>
 <div>
     <li>{{ habit.target }}</li>
 </div>

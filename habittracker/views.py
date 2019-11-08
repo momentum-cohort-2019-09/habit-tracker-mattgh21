@@ -4,7 +4,7 @@ from django.views.generic.edit import FormView
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.utils import timezone
-from .forms import HabitForm
+from .forms import HabitForm, RecordForm
 
 
 # Create views here
@@ -34,7 +34,18 @@ def home_page(request):
         'user': user, 'all_habits': all_habits
     })
 
-# @login_required
-# def profile_page(request, pk):
-#     habits = Habit.objects.filter(user=User.objects.get(pk=pk))
-#     return render(request, 'habittracker/profile.html', {'habits': habits})
+@login_required
+def add_record(request, pk):
+    habit = Habit.objects.get(pk=pk)
+    if request.method == "POST":
+        form = RecordForm(request.POST)
+        if form.is_valid():
+            record = form.save(commit=False)
+            record.user = request.user
+            record.habit = habit
+            record.save()
+            return redirect(to='record', pk=pk)
+    else:
+        form = RecordForm()
+        records = Record.objects.filter(habit=habit)
+        return render(request, 'habittracker/record.html',{'form':form, 'habit':habit, 'records': records})

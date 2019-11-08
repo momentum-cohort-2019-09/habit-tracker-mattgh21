@@ -20,12 +20,14 @@ class Habit(models.Model):
     created_at = models.DateField(default=timezone.now)
     updated_at = models.DateField(default=timezone.now)
     end_date = models.DateField(default=None, null=True)
+    observer = models.ManyToManyField(to='User', related_name='habits_observing', blank=True)
 
     def __str__(self):
         return self.name
 
 class Record(models.Model):
     record = models.TextField()
+    actual = models.PositiveIntegerField(null=True, blank=True)
     habit = models.ForeignKey(
         to='Habit',
         on_delete=models.CASCADE,
@@ -50,4 +52,5 @@ class Comment(models.Model):
     def __str__(self):
         return self.comment
     
+
 

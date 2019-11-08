@@ -23,6 +23,7 @@ urlpatterns = [
     path('accounts/', include('registration.backends.simple.urls')),
     path('', views.home_page, name='home_page'),
     path('accounts/profile/', views.profile, name='profile'),
+    path('habittracker/<int:pk>/add_record', views.add_record, name='record'),
 ]
 
 if settings.DEBUG:

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}{% block content %}
+
+<div class="habit">
+    <p>{{habit.name}}</p>
+
+    <p>Target: {{habit.target}} times per day</p>
+
+    <p>{{habit.created_at}}</p>
+</div>
+
+<div>
+    <form action="" method="POST">
+        {% csrf_token %} {{form.as_p}}
+        <button type="submit">submit</button>
+
+    </form>
+</div>
+
+<div class="record">
+    {% for record in records %}
+
+    <p>{{ record.record }}</p>
+    <p>{{ record.actual }}</p>
+    <p>{{ record.created_at }}</p>
+
+
+    {% if record.met_goal %}
+    <p>You met your goal!</p>
+    {% else %}
+    <p>Keep trying!</p>
+    {% endif %} {% endfor %}
+</div>
+
+
+
+
+{% endblock %}

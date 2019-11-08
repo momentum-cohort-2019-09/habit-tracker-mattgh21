@@ -11,4 +11,4 @@ class HabitForm(forms.ModelForm):
 class RecordForm(forms.ModelForm):
     class Meta:
         model = Record
-        fields = ['record', 'met_goal']
+        fields = ['record', 'met_goal', 'actual', 'created_at']
