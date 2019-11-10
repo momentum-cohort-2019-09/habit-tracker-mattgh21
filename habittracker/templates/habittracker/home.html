@@ -1,10 +1,12 @@
-{% extends "base.html" %} {% block content %}
-<h2>Habits:</h2>
-{% for habit in all_habits %}
-<h4>{{ habit.name }}</h4>
-<div>
-    <li>{{ habit.target }}</li>
+{% extends "base.html" %}{% load static %} {% block content %}
+<div class="home">
+    <h2>Habits:</h2>
+    {% for habit in all_habits %}
+    <h4>{{ habit.name }}</h4>
+    <div>
+        <li>{{ habit.target }}</li>
+    </div>
+    <div>User: {{ habit.user }}</div>
+    <p>{{ habit_created_at }}</p>
 </div>
-<div>User: {{ habit.user }}</div>
-<p>{{ habit_created_at }}</p>
 {% endfor %} {% endblock %}

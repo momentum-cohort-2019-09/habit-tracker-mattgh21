@@ -49,3 +49,4 @@ def add_record(request, pk):
         form = RecordForm()
         records = Record.objects.filter(habit=habit)
         return render(request, 'habittracker/record.html',{'form':form, 'habit':habit, 'records': records})
+

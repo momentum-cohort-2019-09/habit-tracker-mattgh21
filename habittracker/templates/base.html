@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,10 +8,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge"> {% block meta %}{% endblock %}
     <title>Habit Tracker - {% block title %}Home{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdn.shoelace.style/1.0.0-beta24/shoelace.css">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
 </head>
 
 <body>
-    <h1>Welcome to Habit Tracker!</h1>
+    <div class="top">
+        <h1 class="welcome">Welcome to Habit Tracker!</h1>
+    </div>
+
     {% if not user.is_authenticated %}
     <header>
         <nav>

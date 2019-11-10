@@ -143,3 +143,6 @@ EMAIL_BACKEND = 'django.habittracker.mail.backends.console.EmailBackend'
 # STATICFILES_DIRS = [
 #     os.path.join(BASE_DIR, 'statics'),
 # ]
+
+
+DEFAULT_FROM_EMAIL = 'habbitracker@habits.com'
