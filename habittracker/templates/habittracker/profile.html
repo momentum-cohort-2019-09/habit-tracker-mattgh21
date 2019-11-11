@@ -17,6 +17,8 @@
 <p>{{ habit.created_at }}</p>
 {% for observer in habit.observer.all %}
 <p>{{ observer.username }}</p>
-{% endfor %} {% endfor %}
+{% endfor %}
+<a href="{% url 'edit_habit' habit.pk %}">Edit</a>
+<a href="{% url 'delete_habit' habit.pk %}">Delete</a> {% endfor %}
 </div>
 {% endblock %}

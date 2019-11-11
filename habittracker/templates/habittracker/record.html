@@ -20,8 +20,8 @@
     {% for record in records %}
 
     <p>{{ record.record }}</p>
-    <p>{{ record.actual }}</p>
-    <p>{{ record.created_at }}</p>
+    <p>Actual: {{ record.actual }}</p>
+    <p>Date: {{ record.created_at }}</p>
 
 
     {% if record.met_goal %}

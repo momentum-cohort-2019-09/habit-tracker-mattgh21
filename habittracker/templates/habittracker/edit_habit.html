@@ -1,0 +1,9 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+<div class="form">
+    <h3>Edit a Habit</h3>
+    <form action="" method="POST">
+        {% csrf_token %} {{ form.as_p }}
+        <button type="submit">submit</button>
+    </form>
+</div>
+{% endblock %}

@@ -50,3 +50,28 @@ def add_record(request, pk):
         records = Record.objects.filter(habit=habit)
         return render(request, 'habittracker/record.html',{'form':form, 'habit':habit, 'records': records})
 
+# def edit_habit(request, pk):
+#     habit = get_object_or_404(Habit, pk=pk)
+#     if request.method == 'POST':
+#         habit = request.data
+
+def edit_habit(request, pk):
+    habit = get_object_or_404(Habit, id=pk)
+    if request.method == "POST":
+        form = HabitForm(request.POST, instance=habit)
+        if form.is_valid():
+            habit = form.save(commit=False)
+            habit.updated_at = timezone.now()
+            habit.save()
+            return redirect(to='profile')
+    else:
+        form = HabitForm()
+    return render(request, 'habittracker/edit_habit.html',{
+        'form': form
+    })
+
+def delete_habit(request, pk):
+    habit = get_object_or_404(Habit, pk=pk)
+    habit.delete()
+    return redirect('/')
+    
