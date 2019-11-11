@@ -18,17 +18,22 @@
 
 <div class="record">
     {% for record in records %}
-
-    <p>{{ record.record }}</p>
-    <p>Actual: {{ record.actual }}</p>
     <p>Date: {{ record.created_at }}</p>
-
+    <ul>
+        <li>
+            <p>Record: {{ record.record }}</p>
+        </li>
+        <li>
+            <p>Actual: {{ record.actual }}</p>
+        </li>
+    </ul>
 
     {% if record.met_goal %}
     <p>You met your goal!</p>
     {% else %}
     <p>Keep trying!</p>
-    {% endif %} {% endfor %}
+    {% endif %}
+    <a href="{% url 'delete_record' record.pk %}">Delete</a> {% endfor %}
 </div>
 
 

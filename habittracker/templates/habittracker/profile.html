@@ -7,18 +7,18 @@
     </form>
 </div>
 
-<div class="habits"></div>
-{% for habit in habits %}
+<div class="habits">
+    {% for habit in habits %}
 
-<a href="{% url 'record' habit.pk %}">
-    <h3 class="question">{{ habit.name }}</h3>
-</a>
-<p>Goal: {{ habit.target }}</p>
-<p>{{ habit.created_at }}</p>
-{% for observer in habit.observer.all %}
-<p>{{ observer.username }}</p>
-{% endfor %}
-<a href="{% url 'edit_habit' habit.pk %}">Edit</a>
-<a href="{% url 'delete_habit' habit.pk %}">Delete</a> {% endfor %}
+    <a href="{% url 'record' habit.pk %}">
+        <h3 class="question">{{ habit.name }}</h3>
+    </a>
+    <p>Goal: {{ habit.target }}</p>
+    <p>{{ habit.created_at }}</p>
+    {% for observer in habit.observer.all %}
+    <p>Observer(s): {{ observer.username }}</p>
+    {% endfor %}
+    <a href="{% url 'edit_habit' habit.pk %}">Edit</a>
+    <a href="{% url 'delete_habit' habit.pk %}">Delete</a> {% endfor %}
 </div>
 {% endblock %}

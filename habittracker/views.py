@@ -73,5 +73,10 @@ def edit_habit(request, pk):
 def delete_habit(request, pk):
     habit = get_object_or_404(Habit, pk=pk)
     habit.delete()
-    return redirect('/')
+    return redirect(to='profile')
+
+def delete_record(request, pk):
+    record = get_object_or_404(Record, pk=pk)
+    record.delete()
+    return redirect(to='record')
     

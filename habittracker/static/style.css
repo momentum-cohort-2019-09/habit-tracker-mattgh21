@@ -1,5 +1,5 @@
 .habits {
-    margin-left: 5rem;
+    margin-left: 2rem;
 }
 
 .form {
@@ -10,6 +10,10 @@
 .home {
     padding: 1rem;
     margin-left: 1rem;
+}
+
+.record {
+    margin-left: 2rem;
 }
 
 .welcome {
